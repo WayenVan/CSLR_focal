@@ -23,6 +23,7 @@ load_weights: False
 is_resume: False
 checkpoint: outputs/train_lightning/2024-04-24_01-42-41/last.ckpt
 cache_dir: outputs/train_cache
+devices: [0]
 
 data_excluded: ["13April_2011_Wednesday_tagesschau_default-14"]
 
