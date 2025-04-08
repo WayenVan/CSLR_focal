@@ -1,13 +1,12 @@
 if __name__ == "__main__":
     import sys
 
-    sys.path.append("/root/projects/sign_language_transformer/src")
+    sys.path.append("/root/projects/sign_language_focal/src")
     from csi_sign_language.modules.vit_encoder_return_attn.vision_transformer import (
         VisionTransformer,
     )
 else:
     from .vision_transformer import VisionTransformer
-
 
 from collections import OrderedDict, namedtuple
 import torch
@@ -92,4 +91,3 @@ if __name__ == "__main__":
     with torch.no_grad():
         out = model(x, None)
     print(out[0].shape, out[1], out[2].shape)
-
