@@ -32,7 +32,7 @@ datamodule:
   train_shuffle: False
 
 loss:
-  weights: [1.0, 0.1] # ctc loss, heatmap loss
+  weights: [1.0, 10.0] # ctc loss, heatmap loss
   sigmas: [2, 1.5, 1.2, 1, 0.8]
   stages: [7, 8, 9, 10, 11]
 
