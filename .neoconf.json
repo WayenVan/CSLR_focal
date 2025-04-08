@@ -1,0 +1,12 @@
+{
+  "lspconfig": {
+    "basedpyright": {
+      "basedpyright.analysis.include": [
+        "src",
+        "experiments",
+        "tools"
+      ],
+      "basedpyright.analysis.typeCheckingMode": "off"
+    }
+  }
+}

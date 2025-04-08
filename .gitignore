@@ -1,0 +1,106 @@
+core.*
+/dataset
+/resources
+/preprocessed
+**/*.ipynb
+**/.mypy_cache
+/experiments_post
+/results
+*.pyc
+/.vscode
+/.env
+*.code-workspace
+.idea
+*.log
+
+/snap_tmp
+/snap
+**/__pycache__
+.pytest_cache
+mmpose
+
+/outputs
+*.swp
+
+*.log
+/tmp
+.neptune/
+**/build
+**/*.egg-info
+**/*.whl
+.aider*
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+.virtualenv/
+venv.bak/
+.venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# Testing/coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.coverage.*
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Local configuration
+settings/local.py
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# PyCharm
+.idea/
+
+# mypy
+.mypy_cache/
+
+# pipenv
+Pipfile.lock
+
+# Jupyter Notebook
+.ipynb_checkpoints/
