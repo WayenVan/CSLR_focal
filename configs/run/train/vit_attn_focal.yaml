@@ -6,8 +6,10 @@ defaults:
   - /optimizer: adam
   - /lr_scheduler: step
   - /datamodule: ph14
-  - /transforms/train: 224x224
-  - /transforms/test: 224x224
+  # - /transforms/train: 224x224
+  # - /transforms/test: 224x224
+  - /transforms/train: 192x192
+  - /transforms/test: 192x192
   - /model: vit_with_attn
   - /loss: heatmapfocal
 
