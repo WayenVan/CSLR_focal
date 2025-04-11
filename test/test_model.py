@@ -41,7 +41,8 @@ class DebugCallback(Callback):
 @hydra.main(
     version_base="1.3.2",
     config_path="../configs",
-    config_name="run/train/vit_attn_focal_hg.yaml",
+    # config_name="run/train/vit_attn_focal_hg.yaml",
+    config_name="run/train/vit_attn_focal.yaml",
 )
 def test_model(cfg):
     # cfg = hydra.compose('run/train/dual')

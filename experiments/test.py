@@ -1,19 +1,7 @@
-import torch 
-from collections import OrderedDict
+import transformers
+from transformers.models.vit import ViTModel
 
-from mmpretrain.models.backbones.vision_transformer import VisionTransformer
-p = torch.load('resources/vifi_clip/vifi_clip_10_epochs_k400_full_finetuned.pth', map_location='cuda:1')
-a = 0
+model = ViTModel.from_pretrained("WinKawaks/vit-small-patch16-224")
 
-import re
-pattern = re.compile(r'^module.image_encoder.')
-replacement = ''
-new_dict = OrderedDict()
-
-for key,value in p['model'].items():
-    if pattern.match(key):
-        new_key = pattern.sub(replacement, key)
-        new_dict[new_key] = value
-
-
-
+for name, modules in model.named_modules():
+    print(name, modules.__class__.__name__)

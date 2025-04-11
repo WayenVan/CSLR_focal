@@ -1,4 +1,6 @@
 import sys
+from PIL import Image
+import pickle
 
 sys.path.append("./src")
 from typing import Dict
@@ -64,14 +66,12 @@ class ViTPoseWarpper(nn.Module):
 
 device = "cuda:0"
 # Read an image
-image = cv2.imread("./outputs/frames/frame_2.png")
-# image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-# Map the image to [0, 1]
-image = image.astype(np.float32)
+image = Image.open("./resources/0.jpg")
+# image = central_crop(image, 224, 224)
 image = F.to_tensor(image)
-image = F.resize(image, [224, 224])
-image = image / 255.0
-image.unsqueeze_(0)
+image = F.resize(image, [256, 192])
+# image = F.pad(image, [0, 0, 0, 64])
+image = image.unsqueeze(0)
 image = image.to(device)
 
 model = ViTPoseWarpper(
@@ -80,16 +80,19 @@ model = ViTPoseWarpper(
 )
 model.to(device)
 
-
 output = model(image)
+output = output.squeeze(0).cpu().detach().numpy()
+print(output.shape)
+pickle.dump(output, open("outputs/pose.pkl", "wb"))
+
 # output = torch.where(
 #     output < 0.2,
 #     torch.zeros_like(output, device=output.device),
 #     torch.ones_like(output, device=output.device),
 # )
 # print(output.shape)
-plt.axis("off")
-plt.tight_layout(pad=0)  # pad=0 表示无额外边距
-plt.subplots_adjust(left=0, right=1, top=1, bottom=0)  # 调整边界
-plt.imshow(output[0, 0].cpu().numpy())
-plt.savefig("outputs/pose.pdf")
+# plt.axis("off")
+# plt.tight_layout(pad=0)  # pad=0 表示无额外边距
+# plt.subplots_adjust(left=0, right=1, top=1, bottom=0)  # 调整边界
+# plt.imshow(output[0, 0].cpu().numpy())
+# plt.savefig("outputs/pose.pdf")

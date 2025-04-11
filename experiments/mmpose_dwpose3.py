@@ -1,4 +1,5 @@
 import torch
+import pickle
 from torch import nn
 from torch import Tensor
 from torchvision.transforms import functional as F
@@ -95,8 +96,8 @@ if __name__ == "__main__":
     ).to("cuda:1")
 
     # prepare data
-    image = Image.open("./outputs/frames/frame_2.png")
-    image = central_crop(image, 224, 224)
+    image = Image.open("./resources/0.jpg")
+    # image = central_crop(image, 224, 224)
     image = F.to_tensor(image)
     image = F.resize(image, [256, 192])
     # image = F.pad(image, [0, 0, 0, 64])
@@ -108,32 +109,16 @@ if __name__ == "__main__":
     print(x.shape)
     print(y.shape)
 
-    plt.axis("off")
-    plt.tight_layout(pad=0)  # pad=0 表示无额外边距
+    pickle.dump(
+        {
+            "x": x.squeeze(0).cpu().numpy(),
+            "y": y.squeeze(0).cpu().numpy(),
+        },
+        open("outputs/simcc.pkl", "wb"),
+    )
+
+    # plt.axis("off")
+    # plt.tight_layout(pad=0)  # pad=0 表示无额外边距
     # plt.subplots_adjust(left=0, right=1, top=1, bottom=0)  # 调整边界
-    plt.imshow(y[:, 5, 100:108].cpu().numpy())
-    plt.savefig("outputs/simcc_y.pdf")
-# x, y = (torch.nn.functional.softmax(a, dim=-1) ** 4 for a in (x, y))
-# p = einsum(x, y, "b k i, b k j -> b k j i")
-# p = p.max(dim=-3)[0]
-# plt.imshow(p[0, 37].cpu().numpy())
-# plt.savefig("outputs/pose.png")
-#
-# locs = decode(x, y, model.simcc_split_ratio)
-# print(locs.shape)
-#
-# image_np = image.squeeze(0).permute(1, 2, 0).cpu().numpy()
-# image_np = (image_np * 255).astype(np.uint8)
-# image_pil = Image.fromarray(image_np)
-#
-# # Plot the image
-# plt.imshow(image_pil)
-#
-# # Plot the keypoints
-# locs = decode(x, y, model.simcc_split_ratio)
-# locs = locs[0].cpu().numpy()  # Get the keypoints for the first image in the batch
-# for keypoint in locs:
-#     plt.scatter(keypoint[0], keypoint[1], s=10, c="red", marker="o")
-#
-# plt.savefig("outputs/pose_with_keypoints.png")
-# print(locs.shape)
+    # plt.imshow(y[:, 5, 100:108].cpu().numpy())
+    # plt.savefig("outputs/simcc_y.pdf")
