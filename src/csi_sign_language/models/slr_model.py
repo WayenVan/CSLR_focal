@@ -140,11 +140,9 @@ class SLRModel(L.LightningModule):
             raise e
 
         if torch.isnan(loss) or torch.isinf(loss):
-            self.print(
+            raise ValueError(
                 f"find nan, data id={id}, output length={outputs.t_length.cpu().numpy()}, label_length={gloss_length.cpu().numpy()}",
-                file=sys.stderr,
             )
-            raise ValueError("find nan in loss")
 
         hyp = self._ctc_decode(outputs.out.detach(), outputs.t_length.detach())[0]
 

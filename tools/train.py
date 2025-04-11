@@ -31,7 +31,7 @@ from torch.cuda.amp.grad_scaler import GradScaler
 @hydra.main(
     version_base="1.3.2",
     config_path="../configs",
-    config_name="run/train/vit_attn_focal.yaml",
+    config_name="run/train/vit_attn_focal_hg.yaml",
 )
 def main(cfg: DictConfig):
     seed_everything(cfg.seed, workers=True)

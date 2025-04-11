@@ -1,11 +1,14 @@
 _target_: ${csi}.modules.base_stream.BaseStream
 encoder:
   _target_: ${csi}.modules.ViTEncoderWithAttentionHG
-  vit_model: google/vit-base-patch16-224
+  # vit_model: faceWinKawaks/vit-small-patch16-224book/deit-tiny-patch16-224
+  # vit_model: WinKawaks/vit-small-patch16-224
+  # vit_model: google/vit-base-patch16-224
+  vit_model: facebook/deit-small-patch16-224
   use_cls_token: false
 neck:
   _target_: ${csi}.modules.TemporalConvNeck
-  in_channels: 768
+  in_channels: 384
   out_channels: 1024
   bottle_channels: 512
   n_class: 1296

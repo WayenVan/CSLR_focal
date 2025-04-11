@@ -83,7 +83,7 @@ class ViTEncoderWithAttentionHG(torch.nn.Module):
 
 
 if __name__ == "__main__":
-    model = ViTEncoderWithAttentionHG(vit_model="google/vit-base-patch16-224").cuda()
+    model = ViTEncoderWithAttentionHG(vit_model="facebook/deit-tiny-patch16-224").cuda()
     model.train()
     x = torch.randn(1, 3, 10, 224, 224).cuda()
     t_length = torch.tensor([10]).cuda()
