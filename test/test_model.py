@@ -66,7 +66,7 @@ def test_model(cfg):
         # strategy='deepspeed_stage_2',
         # max_steps=100,
         # devices=getattr(cfg, "devices", [1]),
-        devices=[0],
+        devices=[0, 1],
         logger=False,
         enable_checkpointing=False,
         precision=16,
