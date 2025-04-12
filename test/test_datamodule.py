@@ -13,8 +13,8 @@ from tqdm import tqdm
 
 
 def test_dm():
-    hydra.initialize_config_dir("/root/projects/sign_language_multitask/configs")
-    cfg = hydra.compose("run/train/resnet_efficient_causal.yaml")
+    hydra.initialize_config_dir("/root/projects/sign_language_focal/configs/")
+    cfg = hydra.compose("run/train/vit_attn_focal.yaml")
     # cfg = hydra.compose('run/train/dual')
     print(socket.gethostname())
     # cfg.datamodule.num_workers = 0
