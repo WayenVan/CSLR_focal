@@ -10,13 +10,13 @@ defaults:
   # - /transforms/test: 224x224
   - /transforms/train: 192x192
   - /transforms/test: 192x192
-  - /model: vit_with_attn
+  - /model: vit_with_attn_vitpose
   - /loss: heatmapfocal
 
 seed: 3407
 epoch: 200
 tags:
-  - vit_pose
+  - vit_pose_s
   - focal_loss
   - dwpose
 
@@ -35,7 +35,7 @@ datamodule:
   train_shuffle: False
 
 loss:
-  weights: [1.0, 0.0] # ctc loss, heatmap loss
+  weights: [1.0, 0.1] # ctc loss, heatmap loss
   sigmas: [2, 1.5, 1.2, 1, 0.8]
   stages: [7, 8, 9, 10, 11]
 

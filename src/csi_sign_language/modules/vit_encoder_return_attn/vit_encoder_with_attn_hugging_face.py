@@ -77,6 +77,10 @@ class ViTEncoderWithAttentionHG(torch.nn.Module):
                 )
 
         finally:
+            if attn_weight is not None:
+                raise ValueError(
+                    "Attention weights are not None, please check the code."
+                )
             # NOTE: make sure catch is clear
             self.attention_cache.clear()
         return self.ViTSelfAttentionHGOutput(out, t_length, attn_weight)

@@ -42,7 +42,7 @@ class DebugCallback(Callback):
     version_base="1.3.2",
     config_path="../configs",
     # config_name="run/train/vit_attn_focal_hg.yaml",
-    config_name="run/train/vit_attn_focal.yaml",
+    config_name="run/train/vit_attn_focal_vitpose.yaml",
 )
 def test_model(cfg):
     # cfg = hydra.compose('run/train/dual')
@@ -66,7 +66,7 @@ def test_model(cfg):
         # strategy='deepspeed_stage_2',
         # max_steps=100,
         # devices=getattr(cfg, "devices", [1]),
-        devices=[0],
+        devices=[0, 1],
         logger=False,
         enable_checkpointing=False,
         precision=16,

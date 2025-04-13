@@ -5,6 +5,7 @@ __all__ = [
     "TransformerDecoder",
     "ViTAttnEncoder",
     "ViTEncoderWithAttentionHG",
+    "VitWithAttnVitPose",
 ]
 
 from .losses.heatmap_focal_loss import HeatmapFocalLoss
@@ -15,3 +16,4 @@ from .vit_encoder_return_attn.vit_encoder_with_attn import ViTAttnEncoder
 from .vit_encoder_return_attn.vit_encoder_with_attn_hugging_face import (
     ViTEncoderWithAttentionHG,
 )
+from .vit_encoder_return_attn.vit_encoder_with_attn_vitpose import VitWithAttnVitPose
