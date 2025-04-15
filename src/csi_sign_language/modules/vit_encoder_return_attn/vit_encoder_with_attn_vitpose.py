@@ -81,13 +81,20 @@ class VitWithAttnVitPose(nn.Module):
     def migrate_checkpoint(self, ckpt):
         checkpoint = torch.load(ckpt, map_location="cpu")
         new_state_dict = OrderedDict()
-        for key, value in checkpoint.items():
+        for key, value in checkpoint["state_dict"].items():
+            # print(key)
             if key.startswith("backbone."):
                 new_key = re.sub("^backbone\.", "", key)
                 new_state_dict[new_key] = value
-        self.vit.load_state_dict(new_state_dict, strict=False)
+
+        # for key, _ in self.vit.named_parameters():
+        #     print(key)
+        # for key, value in new_state_dict.items():
+        #     print(key)
+
+        del new_state_dict["cls_token"]
+        self.vit.load_state_dict(new_state_dict, strict=True)
         del checkpoint
-        pass
 
     def train(self, mode: bool = True):
         super().train(mode)

@@ -8,6 +8,7 @@ from hydra.utils import instantiate
 from csi_sign_language.data.datamodule.ph14 import Ph14DataModule
 from csi_sign_language.models.slr_model import SLRModel
 import click
+from omegaconf import OmegaConf
 
 
 # output the result of test dataset as much as possible

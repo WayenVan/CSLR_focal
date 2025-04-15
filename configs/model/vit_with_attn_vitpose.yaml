@@ -5,7 +5,7 @@ encoder:
   color_range: [0, 1]
   cfg_path: ${resources.vitpose_cfg}
   checkpoint: ${resources.vitpose_ckpt}
-  drop_path_rate: 0.2
+  drop_path_rate: 0.0
 neck:
   _target_: ${csi}.modules.TemporalConvNeck
   in_channels: 384
@@ -22,4 +22,4 @@ decoder:
   n_heads: 8
   n_layers: 6
   d_feedforward: 2048
-  dropout: 0.5
+  dropout: 0.0

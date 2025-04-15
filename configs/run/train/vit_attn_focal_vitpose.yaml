@@ -35,13 +35,15 @@ datamodule:
   train_shuffle: False
 
 loss:
-  weights: [1.0, 0.1] # ctc loss, heatmap loss
-  sigmas: [2, 1.5, 1.2, 1, 0.8]
-  stages: [7, 8, 9, 10, 11]
+  weights: [1.0, 0.0] # ctc loss, heatmap loss
+  # sigmas: [2, 1.5, 1.2, 1, 0.8]
+  # stages: [7, 8, 9, 10, 11]
+  sigmas: [1.0]
+  stages: [11]
 
 optimizer:
   lr: 1e-5
 
 lr_scheduler:
-  step_size: 20
+  step_size: 30
   gamma: 0.1

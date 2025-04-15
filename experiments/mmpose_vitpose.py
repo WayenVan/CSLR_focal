@@ -84,15 +84,3 @@ output = model(image)
 output = output.squeeze(0).cpu().detach().numpy()
 print(output.shape)
 pickle.dump(output, open("outputs/pose.pkl", "wb"))
-
-# output = torch.where(
-#     output < 0.2,
-#     torch.zeros_like(output, device=output.device),
-#     torch.ones_like(output, device=output.device),
-# )
-# print(output.shape)
-# plt.axis("off")
-# plt.tight_layout(pad=0)  # pad=0 表示无额外边距
-# plt.subplots_adjust(left=0, right=1, top=1, bottom=0)  # 调整边界
-# plt.imshow(output[0, 0].cpu().numpy())
-# plt.savefig("outputs/pose.pdf")
